@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FlyHi</string>
+
+    <string name="available_flights_title">Available Flights</string>
+
+    <string name="date_picker_find_my_trip">Find my trip</string>
+    <string name="flight_book_my_trip">Book my trip</string>
+    <string name="general_error_dialog_title">An error has occurred</string>
+    <string name="general_error_dialog_button">Try again</string>
+</resources>

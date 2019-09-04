@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/dateSelectionFragment">
+
+    <fragment
+        android:id="@+id/availableFlightsFragment"
+        android:name="com.alekskuzmin.flyhi.flights.view.AvailableFlightsFragment"
+        android:label="AvailableFlightsFragment" />
+    <fragment
+        android:id="@+id/dateSelectionFragment"
+        android:name="com.alekskuzmin.flyhi.dateselection.view.DateSelectionFragment"
+        android:label="DateSelectionFragment">
+        <action
+            android:id="@+id/action_dateSelectionFragment_to_flightsFragment"
+            app:destination="@id/availableFlightsFragment" />
+    </fragment>
+</navigation>

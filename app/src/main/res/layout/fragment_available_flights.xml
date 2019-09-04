@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:attrs="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.alekskuzmin.flyhi.flights.view.AvailableFlightsFragment" />
+
+
+        <variable
+            name="vm"
+            type="com.alekskuzmin.flyhi.flights.presentation.AvailableFlightsVm" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/flights_toolbar"
+            layout="@layout/toolbar" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?actionBarSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flights_toolbar"
+            app:visible="@{vm.getRenderedState().loading}" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dimen_default"
+            android:layout_marginTop="?actionBarSize"
+            android:layout_marginRight="@dimen/dimen_default"
+            android:layout_marginBottom="@dimen/dimen_default"
+            android:clipToPadding="false"
+            android:padding="@dimen/dimen_default"
+            app:itemBinding="@{view.flightsItemBinding}"
+            app:items="@{vm.getRenderedState().flights}"
+            app:layout_constraintBottom_toTopOf="@id/pageIndicatorView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
+
+        <com.rd.PageIndicatorView
+            android:id="@+id/pageIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_pager"
+            app:piv_animationType="scale"
+            app:piv_dynamicCount="true"
+            app:piv_interactiveAnimation="true"
+            app:piv_selectedColor="@color/colorAccent"
+            app:piv_unselectedColor="@color/colorPrimaryDark"
+            app:piv_viewPager="@id/view_pager"
+            attrs:piv_padding="12dp"
+            attrs:piv_radius="8dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
